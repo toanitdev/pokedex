@@ -60,11 +60,11 @@ dependencies {
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
-//    // optional - Kotlin Extensions and Coroutines support for Room
-//    implementation("androidx.room:room-ktx:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
 
     // optional - RxJava3 support for Room
-    implementation("androidx.room:room-rxjava3:$room_version")
+//    implementation("androidx.room:room-rxjava3:$room_version")
 
     implementation ("com.google.dagger:hilt-android:2.50")
     kapt ("com.google.dagger:hilt-compiler:2.50")
@@ -78,8 +78,12 @@ dependencies {
 
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
-    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+//    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+//    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")

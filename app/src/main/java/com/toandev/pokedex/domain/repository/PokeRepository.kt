@@ -5,31 +5,29 @@ import com.toandev.pokedex.domain.remote.service.PokeApiService
 import com.toandev.pokedex.models.dto.response.PokemonDetailsRes
 import com.toandev.pokedex.models.dto.response.PokemonListRes
 import com.toandev.pokedex.models.entities.PokemonEntity
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 
 interface PokeRepository {
-    fun getPokemonDataList(): Observable<PokemonListRes>
-    fun getPokemonDetails(name: String): Observable<PokemonDetailsRes>
-    fun insertAllPokemonLocal(pokes: List<PokemonEntity>) : Completable
-    fun getAllPokemonLocal(): Observable<List<PokemonEntity>>
+    suspend fun getPokemonDataList(): PokemonListRes
+    suspend fun getPokemonDetails(name: String): PokemonDetailsRes
+    suspend fun insertAllPokemonLocal(pokes: List<PokemonEntity>)
+    suspend fun getAllPokemonLocal(): List<PokemonEntity>
 }
 
 class PokeRepositoryImpl @Inject constructor(
     val service: PokeApiService,
     val pokeDatabase: PokeDatabase
 ) : PokeRepository {
-    override fun getPokemonDataList(): Observable<PokemonListRes> = service.getPokemonList()
-    override fun getPokemonDetails(name: String): Observable<PokemonDetailsRes> =
+    override suspend fun getPokemonDataList(): PokemonListRes = service.getPokemonList()
+    override suspend fun getPokemonDetails(name: String): PokemonDetailsRes =
         service.getPokemonDetails(name)
 
-    override fun insertAllPokemonLocal(pokes: List<PokemonEntity>) : Completable {
+    override suspend fun insertAllPokemonLocal(pokes: List<PokemonEntity>) {
         return pokeDatabase.pokemonDao().insertAll(*pokes.toTypedArray())
     }
 
-    override fun getAllPokemonLocal(): Observable<List<PokemonEntity>> {
+    override suspend fun getAllPokemonLocal() : List<PokemonEntity> {
         return pokeDatabase.pokemonDao().getAll()
     }
 }
