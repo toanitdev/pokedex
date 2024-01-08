@@ -2,7 +2,7 @@ package com.toandev.pokedex.di.modules
 
 import android.content.Context
 import androidx.room.Room
-import com.toandev.pokedex.domain.local.PokeDatabase
+import com.toandev.pokedex.data.local.PokeDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

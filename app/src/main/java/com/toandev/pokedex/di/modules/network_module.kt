@@ -1,8 +1,8 @@
 package com.toandev.pokedex.di.modules
 
-import com.toandev.pokedex.domain.remote.service.PokeApiService
-import com.toandev.pokedex.domain.repository.PokeRepository
-import com.toandev.pokedex.domain.repository.PokeRepositoryImpl
+import com.toandev.pokedex.data.remote.service.PokeApiService
+import com.toandev.pokedex.domain.repository.IPokeRepository
+import com.toandev.pokedex.data.repository.PokeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -36,5 +36,5 @@ object NetworkModule {
 @InstallIn(SingletonComponent::class,ViewModelComponent::class)
 abstract class Repository {
     @Binds
-    abstract fun bindPokeRepository(pokeRepositoryImpl: PokeRepositoryImpl) : PokeRepository
+    abstract fun bindPokeRepository(pokeRepositoryImpl: PokeRepositoryImpl) : IPokeRepository
 }
